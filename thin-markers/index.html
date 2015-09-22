@@ -83,10 +83,23 @@
 
     <div class="item-container">
       <div class="button-container">
-        <input id='reset_button' type="button" class="item-button" value="Reset">
         <input id='save_button' type="button" class="item-button" value="Save">
       </div>
     </div>
+    <div class="item-container">
+      <div class="button-container">
+        <input id='reset_button' type="button" class="item-button" value="Reset">
+      </div>
+    </div>
+
+    <div class='item-container'>
+      <div class='item-container-content'>
+         <div class='item'>
+         Thin Markers is modified version of the Thin watchface by Chris Lewis.
+         </div>
+      </div>
+    </div>
+ 
 
     <script>
       function persistWrite(key, value) {
@@ -130,29 +143,13 @@
         document.getElementById('check_battery').checked     = persistRead('battery', 'false') === 'true';
         document.getElementById('check_second_hand').checked = persistRead('second_hand', 'false') === 'true';
         document.getElementById('picker_hour_markers_color').value     = persistRead('hour_markers_color', '#FFFFFF');
-        document.getElementById('picker_minute_markers_color').value   = persistRead('minute_markers_color', '#FFFFFF');
+        document.getElementById('picker_minute_markers_color').value   = persistRead('minute_markers_color', '#AAAAAA');
         document.getElementById('picker_charging_markers_color').value = persistRead('charging_markers_color', '#00FF00');
         document.getElementById('picker_hands_color').value            = persistRead('hands_color', '#AAAAAA');
         document.getElementById('picker_tips_color').value             = persistRead('tips_color', '#FFFFFF');
         document.getElementById('picker_second_hand_color').value      = persistRead('second_hand_color', '#AA0000');
         document.getElementById('picker_second_tip_color').value       = persistRead('second_tip_color', '#FFFF00');
         document.getElementById('picker_calendar_day_color').value     = persistRead('calendar_day_color', '#FFFF00');
-      }
-
-      function loadDefault() {
-        document.getElementById('check_date').checked        = true;
-        document.getElementById('check_day').checked         = true;
-        document.getElementById('check_bluetooth').checked   = true;
-        document.getElementById('check_battery').checked     = true;
-        document.getElementById('check_second_hand').checked = true;
-        document.getElementById('picker_hour_markers_color').value     = '#FFFFFF';
-        document.getElementById('picker_minute_markers_color').value   = '#FFFFFF';
-        document.getElementById('picker_charging_markers_color').value = '#00FF00';
-        document.getElementById('picker_hands_color').value            = '#AAAAAA';
-        document.getElementById('picker_tips_color').value             = '#FFFFFF';
-        document.getElementById('picker_second_hand_color').value      = '#AA0000';
-        document.getElementById('picker_second_tip_color').value       = '#FFFF00';
-        document.getElementById('picker_calendar_day_color').value     = '#FFFF00';
       }
 
       function ajax(url, type, callback) {
@@ -165,7 +162,42 @@
       };
 
       var resetButton = document.getElementById('reset_button');
-      resetButton.addEventListener('click', loadDefault, false );
+      resetButton.addEventListener('click', 
+        function() {
+          var options = {
+            'date'       : 'true',
+            'day'        : 'true',
+            'bluetooth'  : 'true',
+            'battery'    : 'true',
+            'second_hand': 'true',
+            'hour_markers_color'     : '#FFFFFF',
+            'minute_markers_color'   : '#AAAAAA',
+            'charging_markers_color' : '#00FF00',
+            'hands_color'            : '#AAAAAA',
+            'tips_color'             : '#FFFFFF',
+            'second_hand_color'      : '#AA0000',
+            'second_tip_color'       : '#FFFF00',
+            'calendar_day_color'     : '#FFFF00'
+          };  
+          var location = 'pebblejs://close#' + encodeURIComponent(JSON.stringify(options));
+
+          persistWrite('date', options.date);
+          persistWrite('day', options.day);
+          persistWrite('bluetooth', options.bluetooth);
+          persistWrite('battery', options.battery);
+          persistWrite('second_hand', options.second_hand);
+          persistWrite('hour_markers_color', options.hour_markers_color);
+          persistWrite('minute_markers_color', options.minute_markers_color);
+          persistWrite('charging_markers_color', options.charging_markers_color);
+          persistWrite('hands_color', options.hands_color);
+          persistWrite('tips_color', options.tips_color);
+          persistWrite('second_hand_color', options.second_hand_color);
+          persistWrite('second_tip_color', options.second_tip_color);
+          persistWrite('calendar_day_color', options.calendar_day_color);
+
+          document.location = location;
+        }, 
+      false);
 
       var submitButton = document.getElementById('save_button');
       submitButton.addEventListener('click', 
