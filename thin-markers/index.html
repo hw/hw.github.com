@@ -47,6 +47,15 @@
          <label class='item'>Color of Minute Markers
            <input id='picker_minute_markers_color' type='text' class="item-color item-color-sunny" value="#FFFFFF" />
          </label>
+         <label class='item'>Color of Hour Markers when Charging
+           <input id='picker_charging_markers_color' type='text' class="item-color item-color-sunny" value="#FF0000" />
+         </label>
+         <label class='item'>Color of Hour and Minute Hand 
+           <input id='picker_hands_color' type='text' class="item-color item-color-sunny" value="#FF0000" />
+         </label>
+         <label class='item'>Color of Hour and Minute Hand Tip
+           <input id='picker_tips_color' type='text' class="item-color item-color-sunny" value="#FF0000" />
+         </label>
          <label class='item'>Color of Second Hand 
            <input id='picker_second_hand_color' type='text' class="item-color item-color-sunny" value="#FF0000" />
          </label>
@@ -85,6 +94,9 @@
           persistWrite('second_hand', 'true');
           persistWrite('hour_markers_color', '#FFFFFF');
           persistWrite('minute_markers_color', '#FFFFFF');
+          persistWrite('charging_markers_color', '#00FF00');
+          persistWrite('hours_color', '#FFFFFF');
+          persistWrite('tips_color', '#00FFFF');
           persistWrite('second_hand_color', '#FF0000');
         }
       }
@@ -95,9 +107,12 @@
         $('#check_bluetooth').checked   = persistRead('bluetooth', 'false') === 'true';
         $('#check_battery').checked     = persistRead('battery', 'false') === 'true';
         $('#check_second_hand').checked = persistRead('second_hand', 'false') === 'true';
-        $('#picker_hour_markers_color').value   = persistRead('hour_markers_color', '#FFFFFF');
-        $('#picker_minute_markers_color').value = persistRead('minute_markers_color', '#FFFFFF');
-        $('#picker_second_hand_color').value    = persistRead('second_hand_color', '#FF0000');
+        $('#picker_hour_markers_color').value     = persistRead('hour_markers_color', '#FFFFFF');
+        $('#picker_minute_markers_color').value   = persistRead('minute_markers_color', '#FFFFFF');
+        $('#picker_charging_markers_color').value = persistRead('charging_markers_color', '#00FF00');
+        $('#picker_hands_color').value            = persistRead('hands_color', '#FFFFFF');
+        $('#picker_tips_color').value             = persistRead('tips_color', '#00FFFF');
+        $('#picker_second_hand_color').value      = persistRead('second_hand_color', '#FF0000');
       }
 
       function ajax(url, type, callback) {
@@ -118,9 +133,12 @@
             'bluetooth'  : $('#check_bluetooth').checked   ? 'true' : 'false',
             'battery'    : $('#check_battery').checked     ? 'true' : 'false',
             'second_hand': $('#check_second_hand').checked ? 'true' : 'false',
-            'hour_markers_color'   : $('#picker_hour_markers_color').value,
-            'minute_markers_color' : $('#picker_minute_markers_color').value,
-            'second_hand_color'    : $('#picker_second_hand_color').value
+            'hour_markers_color'     : $('#picker_hour_markers_color').value,
+            'minute_markers_color'   : $('#picker_minute_markers_color').value,
+            'charging_markers_color' : $('#picker_charging_markers_color').value,
+            'hands_color'            : $('#picker_hands_color').value,
+            'tips_color'             : $('#picker_tips_color').value,
+            'second_hand_color'      : $('#picker_second_hand_color').value
           };  
           var location = 'pebblejs://close#' + encodeURIComponent(JSON.stringify(options));
 
@@ -131,6 +149,9 @@
           persistWrite('second_hand', options.second_hand);
           persistWrite('hour_markers_color', options.hour_markers_color);
           persistWrite('minute_markers_color', options.minute_markers_color);
+          persistWrite('charging_markers_color', options.charging_markers_color);
+          persistWrite('hands_color', options.hands_color);
+          persistWrite('tips_color', options.tips_color);
           persistWrite('second_hand_color', options.second_hand_color);
 
           document.location = location;
