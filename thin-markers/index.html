@@ -43,7 +43,7 @@
            <input id='picker_minute_markers_color' type='text' class="item-color item-color-sunny" value="#FFFFFF" />
          </label>
          <label class='item'>Color of Second Hand 
-           <input id='picker_second_hand_color' type='text' class="item-color item-color-normal" value="#FFFFFF" />
+           <input id='picker_second_hand_color' type='text' class="item-color item-color-sunny" value="#FFFFFF" />
          </label>
       <div>
     </div>
@@ -106,10 +106,10 @@
       submitButton.addEventListener('click', 
         function() {
           var options = {
-            'date'       : $('#check_date').checked ? 'true' : 'false',
-            'day'        : $('#check_day').checked ? 'true' : 'false',
-            'bluetooth   : $('#check_bluetooth').checked ? 'true' : 'false',
-            'battery     : $('#check_battery').checked ? 'true' : 'false',
+            'date'       : $('#check_date').checked        ? 'true' : 'false',
+            'day'        : $('#check_day').checked         ? 'true' : 'false',
+            'bluetooth'  : $('#check_bluetooth').checked   ? 'true' : 'false',
+            'battery'    : $('#check_battery').checked     ? 'true' : 'false',
             'second_hand': $('#check_second_hand').checked ? 'true' : 'false',
             'hour_markers_color'   : $('#picker_hour_markers_color').value,
             'minute_markers_color' : $('#picker_minute_markers_color').value,
