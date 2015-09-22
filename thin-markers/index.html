@@ -36,6 +36,11 @@
          <label class='item'>Show second hand
            <input id='check_second_hand' type='checkbox' class="item-toggle" />
          </label>
+      <div>
+    </div>
+
+    <div class='item-container'>
+      <div class='item-container-content'>
          <label class='item'>Color of Hour Markers
            <input id='picker_hour_markers_color' type='text' class="item-color item-color-sunny" value="#FFFFFF" />
          </label>
@@ -43,7 +48,7 @@
            <input id='picker_minute_markers_color' type='text' class="item-color item-color-sunny" value="#FFFFFF" />
          </label>
          <label class='item'>Color of Second Hand 
-           <input id='picker_second_hand_color' type='text' class="item-color item-color-sunny" value="#FFFFFF" />
+           <input id='picker_second_hand_color' type='text' class="item-color item-color-sunny" value="#FF0000" />
          </label>
       <div>
     </div>
@@ -80,6 +85,7 @@
           persistWrite('second_hand', 'true');
           persistWrite('hour_markers_color', '#FFFFFF');
           persistWrite('minute_markers_color', '#FFFFFF');
+          persistWrite('second_hand_color', '#FF0000');
         }
       }
 
@@ -91,6 +97,7 @@
         $('#check_second_hand').checked = persistRead('second_hand', 'false') === 'true';
         $('#picker_hour_markers_color').value   = persistRead('hour_markers_color', '#FFFFFF');
         $('#picker_minute_markers_color').value = persistRead('minute_markers_color', '#FFFFFF');
+        $('#picker_second_hand_color').value    = persistRead('second_hand_color', '#FF0000');
       }
 
       function ajax(url, type, callback) {
