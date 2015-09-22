@@ -48,16 +48,16 @@
            <input id='picker_minute_markers_color' type='text' class="item-color item-color-sunny" value="#FFFFFF" />
          </label>
          <label class='item'>Color of Hour Markers when Charging
-           <input id='picker_charging_markers_color' type='text' class="item-color item-color-sunny" value="#FF0000" />
+           <input id='picker_charging_markers_color' type='text' class="item-color item-color-sunny" value="#8ee391" />
          </label>
          <label class='item'>Color of Hour and Minute Hand 
-           <input id='picker_hands_color' type='text' class="item-color item-color-sunny" value="#FF0000" />
+           <input id='picker_hands_color' type='text' class="item-color item-color-sunny" value="#9ee594" />
          </label>
          <label class='item'>Color of Hour and Minute Hand Tip
-           <input id='picker_tips_color' type='text' class="item-color item-color-sunny" value="#FF0000" />
+           <input id='picker_tips_color' type='text' class="item-color item-color-sunny" value="#ffeeab" />
          </label>
          <label class='item'>Color of Second Hand 
-           <input id='picker_second_hand_color' type='text' class="item-color item-color-sunny" value="#FF0000" />
+           <input id='picker_second_hand_color' type='text' class="item-color item-color-sunny" value="#99353f" />
          </label>
       <div>
     </div>
@@ -94,10 +94,10 @@
           persistWrite('second_hand', 'true');
           persistWrite('hour_markers_color', '#FFFFFF');
           persistWrite('minute_markers_color', '#FFFFFF');
-          persistWrite('charging_markers_color', '#00FF00');
-          persistWrite('hands_color', '#FFFFFF');
-          persistWrite('tips_color', '#00FFFF');
-          persistWrite('second_hand_color', '#FF0000');
+          persistWrite('charging_markers_color', '#8ee391');
+          persistWrite('hands_color', '#9ee594');
+          persistWrite('tips_color', '#ffeeab');
+          persistWrite('second_hand_color', '#99353f');
         }
       }
 
@@ -109,10 +109,10 @@
         document.getElementById('check_second_hand').checked = persistRead('second_hand', 'false') === 'true';
         document.getElementById('picker_hour_markers_color').value     = persistRead('hour_markers_color', '#FFFFFF');
         document.getElementById('picker_minute_markers_color').value   = persistRead('minute_markers_color', '#FFFFFF');
-        document.getElementById('picker_charging_markers_color').value = persistRead('charging_markers_color', '#00FF00');
-        document.getElementById('picker_hands_color').value            = persistRead('hands_color', '#FFFFFF');
-        document.getElementById('picker_tips_color').value             = persistRead('tips_color', '#00FFFF');
-        document.getElementById('picker_second_hand_color').value      = persistRead('second_hand_color', '#FF0000');
+        document.getElementById('picker_charging_markers_color').value = persistRead('charging_markers_color', '#8ee391');
+        document.getElementById('picker_hands_color').value            = persistRead('hands_color', '#9ee594');
+        document.getElementById('picker_tips_color').value             = persistRead('tips_color', '#ffeeab');
+        document.getElementById('picker_second_hand_color').value      = persistRead('second_hand_color', '#99353f');
       }
 
       function ajax(url, type, callback) {
