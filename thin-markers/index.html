@@ -42,22 +42,22 @@
     <div class='item-container'>
       <div class='item-container-content'>
          <label class='item'>Color of Hour Markers
-           <input id='picker_hour_markers_color' type='text' class="item-color item-color-sunny" value="#FFFFFF" />
+           <input id='picker_hour_markers_color' type='text' class="item-color item-color-normal" value="#FFFFFF" />
          </label>
          <label class='item'>Color of Minute Markers
-           <input id='picker_minute_markers_color' type='text' class="item-color item-color-sunny" value="#FFFFFF" />
+           <input id='picker_minute_markers_color' type='text' class="item-color item-color-normal" value="#AAAAAA" />
          </label>
          <label class='item'>Color of Hour Markers when Charging
-           <input id='picker_charging_markers_color' type='text' class="item-color item-color-sunny" value="#8ee391" />
+           <input id='picker_charging_markers_color' type='text' class="item-color item-color-normal" value="#00FF00" />
          </label>
          <label class='item'>Color of Hour and Minute Hand 
-           <input id='picker_hands_color' type='text' class="item-color item-color-sunny" value="#9ee594" />
+           <input id='picker_hands_color' type='text' class="item-color item-color-normal" value="#AAAAAA" />
          </label>
          <label class='item'>Color of Hour and Minute Hand Tip
-           <input id='picker_tips_color' type='text' class="item-color item-color-sunny" value="#ffeeab" />
+           <input id='picker_tips_color' type='text' class="item-color item-color-normal" value="#FFFFFF" />
          </label>
          <label class='item'>Color of Second Hand 
-           <input id='picker_second_hand_color' type='text' class="item-color item-color-sunny" value="#99353f" />
+           <input id='picker_second_hand_color' type='text' class="item-color item-color-normal" value="#AA0000" />
          </label>
       <div>
     </div>
@@ -94,10 +94,10 @@
           persistWrite('second_hand', 'true');
           persistWrite('hour_markers_color', '#FFFFFF');
           persistWrite('minute_markers_color', '#FFFFFF');
-          persistWrite('charging_markers_color', '#8ee391');
-          persistWrite('hands_color', '#9ee594');
-          persistWrite('tips_color', '#ffeeab');
-          persistWrite('second_hand_color', '#99353f');
+          persistWrite('charging_markers_color', '#00FF00');
+          persistWrite('hands_color', '#AAAAAA');
+          persistWrite('tips_color', '#FFFFFF');
+          persistWrite('second_hand_color', '#AA0000');
         }
       }
 
@@ -109,10 +109,10 @@
         document.getElementById('check_second_hand').checked = persistRead('second_hand', 'false') === 'true';
         document.getElementById('picker_hour_markers_color').value     = persistRead('hour_markers_color', '#FFFFFF');
         document.getElementById('picker_minute_markers_color').value   = persistRead('minute_markers_color', '#FFFFFF');
-        document.getElementById('picker_charging_markers_color').value = persistRead('charging_markers_color', '#8ee391');
-        document.getElementById('picker_hands_color').value            = persistRead('hands_color', '#9ee594');
-        document.getElementById('picker_tips_color').value             = persistRead('tips_color', '#ffeeab');
-        document.getElementById('picker_second_hand_color').value      = persistRead('second_hand_color', '#99353f');
+        document.getElementById('picker_charging_markers_color').value = persistRead('charging_markers_color', '#00FF00');
+        document.getElementById('picker_hands_color').value            = persistRead('hands_color', '#AAAAAA');
+        document.getElementById('picker_tips_color').value             = persistRead('tips_color', '#FFFFFF');
+        document.getElementById('picker_second_hand_color').value      = persistRead('second_hand_color', '#AA0000');
       }
 
       function ajax(url, type, callback) {
