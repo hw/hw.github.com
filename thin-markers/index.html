@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href="slate/css/slate.css">
     <title>Thin Marker Configuration</title>
+
+    <link rel="stylesheet" type="text/css" href="css/slate.css">
+    <script src='js/slate.min.js'></script>
+
   </head>
   <body>
 
@@ -34,7 +37,7 @@
            <input id='check_second_hand' type='checkbox' class="item-toggle" />
          </label>
          <label class='item'>Color of Hour Markers
-           <input id='picker_hour_markers_color' type='text' class="item-color" value="#FFFFFF" />
+           <input id='picker_hour_markers_color' type='text' class="item-color item-color-sunny" value="#FFFFFF" />
          </label>
       <div>
     </div>
@@ -45,7 +48,6 @@
       </div>
     </div>
 
-    <script src='slate/js/slate.min.js'></script>
     <script>
       function persistWrite(key, value) {
         localStorage.setItem(key, value);
