@@ -5,11 +5,22 @@
 
     <link rel="stylesheet" type="text/css" href="css/slate.css">
     <script src='js/slate.min.js'></script>
+    <style>
+      .title {
+        padding: 15px 10px;
+        text-transform: uppercase;
+        font-family: 'PT Sans', sans-serif;
+        font-size: 1.2em;
+        font-weight: 500;
+        color: #888888;
+        text-align: center;
+      }
+    </style>
 
   </head>
   <body>
 
-    <h2 class="title">Thin Marker Configuration</h1>
+    <h2 class="title">Thin Marker Configuration</h2>
 
     <div class='item-container'>
       <div class='item-container-content'>
@@ -20,6 +31,7 @@
     </div>
  
     <div class='item-container'>
+      <div class='item-container-header'>Customization</div>
       <div class='item-container-content'>
          <label class='item'>Show weekday/month
            <input id='check_date' type='checkbox' class="item-toggle" />
@@ -40,29 +52,30 @@
     </div>
 
     <div class='item-container'>
+      <div class='item-container-header'>Colours</div>
       <div class='item-container-content'>
-         <label class='item'>Color of Hour Markers
+         <label class='item'>Hour Markers
            <input id='picker_hour_markers_color' type='text' class="item-color item-color-normal" value="#FFFFFF" />
          </label>
-         <label class='item'>Color of Minute Markers
+         <label class='item'>Minute Markers
            <input id='picker_minute_markers_color' type='text' class="item-color item-color-normal" value="#AAAAAA" />
          </label>
-         <label class='item'>Color of Hour Markers when Charging
+         <label class='item'>Hour Markers (when charging)
            <input id='picker_charging_markers_color' type='text' class="item-color item-color-normal" value="#00FF00" />
          </label>
-         <label class='item'>Color of Hour and Minute Hand 
+         <label class='item'>Hour and Minute Hand 
            <input id='picker_hands_color' type='text' class="item-color item-color-normal" value="#AAAAAA" />
          </label>
-         <label class='item'>Color of Hour and Minute Hand Tip
+         <label class='item'>Tip of Hour and Minute Hands
            <input id='picker_tips_color' type='text' class="item-color item-color-normal" value="#FFFFFF" />
          </label>
-         <label class='item'>Color of Second Hand 
+         <label class='item'>Second Hand 
            <input id='picker_second_hand_color' type='text' class="item-color item-color-normal" value="#AA0000" />
          </label>
-         <label class='item'>Color of Second Hand Tip
+         <label class='item'>Tip of Second Hand 
            <input id='picker_second_tip_color' type='text' class="item-color item-color-normal" value="#FFFF00" />
          </label>
-         <label class='item'>Color of Calendar Day Text
+         <label class='item'>Calendar Day Text
            <input id='picker_calendar_day_color' type='text' class="item-color item-color-normal" value="#FFFF00" />
          </label>
       <div>
