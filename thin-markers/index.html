@@ -39,6 +39,12 @@
          <label class='item'>Color of Hour Markers
            <input id='picker_hour_markers_color' type='text' class="item-color item-color-sunny" value="#FFFFFF" />
          </label>
+         <label class='item'>Color of Minute Markers
+           <input id='picker_minute_markers_color' type='text' class="item-color item-color-sunny" value="#FFFFFF" />
+         </label>
+         <label class='item'>Color of Second Hand 
+           <input id='picker_second_hand_color' type='text' class="item-color item-color-normal" value="#FFFFFF" />
+         </label>
       <div>
     </div>
 
@@ -73,16 +79,18 @@
           persistWrite('battery', 'true');
           persistWrite('second_hand', 'true');
           persistWrite('hour_markers_color', '#FFFFFF');
+          persistWrite('minute_markers_color', '#FFFFFF');
         }
       }
 
       function loadConfig() {
-        document.getElementById('check_date').checked = persistRead('date', 'false') === 'true';
-        document.getElementById('check_day').checked = persistRead('day', 'false') === 'true';
-        document.getElementById('check_bluetooth').checked = persistRead('bluetooth', 'false') === 'true';
-        document.getElementById('check_battery').checked = persistRead('battery', 'false') === 'true';
-        document.getElementById('check_second_hand').checked = persistRead('second_hand', 'false') === 'true';
-        document.getElementById('picker_hour_markers_color').value = persistRead('hour_markers_color', '#FFFFFF');
+        $('#check_date').checked        = persistRead('date', 'false') === 'true';
+        $('#check_day').checked         = persistRead('day', 'false') === 'true';
+        $('#check_bluetooth').checked   = persistRead('bluetooth', 'false') === 'true';
+        $('#check_battery').checked     = persistRead('battery', 'false') === 'true';
+        $('#check_second_hand').checked = persistRead('second_hand', 'false') === 'true';
+        $('#picker_hour_markers_color').value   = persistRead('hour_markers_color', '#FFFFFF');
+        $('#picker_minute_markers_color').value = persistRead('minute_markers_color', '#FFFFFF');
       }
 
       function ajax(url, type, callback) {
@@ -98,12 +106,14 @@
       submitButton.addEventListener('click', 
         function() {
           var options = {
-            'date': document.getElementById('check_date').checked ? 'true' : 'false',
-            'day': document.getElementById('check_day').checked ? 'true' : 'false',
-            'bluetooth': document.getElementById('check_bluetooth').checked ? 'true' : 'false',
-            'battery': document.getElementById('check_battery').checked ? 'true' : 'false',
-            'second_hand': document.getElementById('check_second_hand').checked ? 'true' : 'false',
-            'hour_markers_color' : document.getElementById('picker_hour_markers_color').value
+            'date'       : $('#check_date').checked ? 'true' : 'false',
+            'day'        : $('#check_day').checked ? 'true' : 'false',
+            'bluetooth   : $('#check_bluetooth').checked ? 'true' : 'false',
+            'battery     : $('#check_battery').checked ? 'true' : 'false',
+            'second_hand': $('#check_second_hand').checked ? 'true' : 'false',
+            'hour_markers_color'   : $('#picker_hour_markers_color').value,
+            'minute_markers_color' : $('#picker_minute_markers_color').value,
+            'second_hand_color'    : $('#picker_second_hand_color').value
           };  
           var location = 'pebblejs://close#' + encodeURIComponent(JSON.stringify(options));
 
@@ -113,6 +123,8 @@
           persistWrite('battery', options.battery);
           persistWrite('second_hand', options.second_hand);
           persistWrite('hour_markers_color', options.hour_markers_color);
+          persistWrite('minute_markers_color', options.minute_markers_color);
+          persistWrite('second_hand_color', options.second_hand_color);
 
           document.location = location;
         }, 
