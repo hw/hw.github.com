@@ -3,36 +3,48 @@
   <head>
     <title>Thin Marker Configuration</title>
     <link ref="stylesheet" href="slate/css/slate.css" />
+    <script src='slate/js/slate.min.js'></script>
   </head>
   <body>
-    <h2>Thin Marker Configuration</h2>
-    <p>
-      Choose settings, click 'Save' and reload app to apply. 
-    </p>
+
+    <h1 class="title">Thin Marker Configuration</h1>
+
+    <div class='item-container'>
+      <div class='item-container-content'>
+         <div class='item'>
+         Choose settings, click 'Save' and reload app to apply. 
+         </div>
+      </div>
+    </div>
  
-    <table>
-      <tr><td>Show weekday/month</td><td><input id='check_date' type='checkbox'/></tr>
-      <tr><td>Show day of month</td><td><input id='check_day' type='checkbox'/></tr>
-      <tr><td>Show disconnected indicator</td><td><input id='check_bluetooth' type='checkbox'/></td></tr>
-      <tr><td>Show battery level </td><td><input id='check_battery' type='checkbox'/></tr>
-      <tr><td>Show second hand</td><td><input id='check_second_hand' type='checkbox'/></tr>
-      <tr><td>Color of Hour Markers</td><td><input id='picker_hour_markers_color' type='text' class="item-color"/></tr>
-    </table>
+    <div class='item-container'>
+      <div class='item-container-content'>
+         <label class='item'>Show weekday/month
+           <input id='check_date' type='checkbox' class="item-toggle" />
+         </label>
+         <label class='item'>Show day of month
+           <input id='check_day' type='checkbox' />
+         </label>
+         <label class='item'>Show disconnected indicator
+           <input id='check_bluetooth' type='checkbox' />
+         </label>
+         <label class='item'>Show battery level
+           <input id='check_battery' type='checkbox' />
+         </label>
+         <label class='item'>Show second hand
+           <input id='check_second_hand' type='checkbox' />
+         </label>
+         <label class='item'>Color of Hour Markers
+           <input id='picker_hour_markers_color' type='text' class="item-color" />
+         </label>
+      <div>
+    </div>
 
-    <p>
-    <button id='save_button'>Save</button>
-    </p>
-
-    <hr />
-    <h2>Version</h2>
-    <p id='current_version'>Current version:</p>
-    <p id='p_version'>Getting latest version...</p>
-
-    <hr />
-    <p>
-    <h2>Latest News</h2>
-    <p id='news'>Loading...</p>
-    </p>
+    <div class="item-container">
+      <div class="button-container">
+        <input id='save_button' type="button" class="item-button" value="Save">
+      </div>
+    </div>
 
     <script>
       function persistWrite(key, value) {
@@ -68,7 +80,7 @@
         document.getElementById('check_bluetooth').checked = persistRead('bluetooth', 'false') === 'true';
         document.getElementById('check_battery').checked = persistRead('battery', 'false') === 'true';
         document.getElementById('check_second_hand').checked = persistRead('second_hand', 'false') === 'true';
-        document.getElementById('picker_hour_markers_color') = persistRead('hour_markers_color', '#FFFFFF');
+        document.getElementById('picker_hour_markers_color').value = persistRead('hour_markers_color', '#FFFFFF');
       }
 
       function ajax(url, type, callback) {
@@ -79,24 +91,6 @@
         xhr.open(type, url);
         xhr.send();
       };
-
-      function getAppVersionAndNews() {
-        //Get latest
-        ajax(
-          'https://dl.dropboxusercontent.com/u/10824180/pebble%20config%20pages/app_versions.json', 
-          'GET',
-          function(responseText) {
-            var json = JSON.parse(responseText);
-            document.getElementById('p_version').innerHTML = 'Latest version: ' + json.thin;
-            document.getElementById('news').innerHTML = '' + json.thinnews;
-          }
-        );
-
-        //Get local
-        var version = '' + document.location;
-        version = version.substring(version.indexOf('version=') + 'version='.length);
-        document.getElementById('current_version').innerHTML = 'Current version: ' + version;
-      }
 
       var submitButton = document.getElementById('save_button');
       submitButton.addEventListener('click', 
@@ -122,9 +116,9 @@
         }, 
       false);
 
-      getAppVersionAndNews();
       firstTimeSetup();
       loadConfig();
     </script>
+
   </body>
 </html>
