@@ -83,6 +83,7 @@
 
     <div class="item-container">
       <div class="button-container">
+        <input id='reset_button' type="button" class="item-button" value="Reset">
         <input id='save_button' type="button" class="item-button" value="Save">
       </div>
     </div>
@@ -138,6 +139,22 @@
         document.getElementById('picker_calendar_day_color').value     = persistRead('calendar_day_color', '#FFFF00');
       }
 
+      function loadDefault() {
+        document.getElementById('check_date').checked        = true;
+        document.getElementById('check_day').checked         = true;
+        document.getElementById('check_bluetooth').checked   = true;
+        document.getElementById('check_battery').checked     = true;
+        document.getElementById('check_second_hand').checked = true;
+        document.getElementById('picker_hour_markers_color').value     = '#FFFFFF';
+        document.getElementById('picker_minute_markers_color').value   = '#FFFFFF';
+        document.getElementById('picker_charging_markers_color').value = '#00FF00';
+        document.getElementById('picker_hands_color').value            = '#AAAAAA';
+        document.getElementById('picker_tips_color').value             = '#FFFFFF';
+        document.getElementById('picker_second_hand_color').value      = '#AA0000';
+        document.getElementById('picker_second_tip_color').value       = '#FFFF00';
+        document.getElementById('picker_calendar_day_color').value     = '#FFFF00';
+      }
+
       function ajax(url, type, callback) {
         var xhr = new XMLHttpRequest();
         xhr.onload = function () {
@@ -146,6 +163,9 @@
         xhr.open(type, url);
         xhr.send();
       };
+
+      var resetButton = document.getElementById('reset_button');
+      resetButton.addEventListener('click', loadDefault, false );
 
       var submitButton = document.getElementById('save_button');
       submitButton.addEventListener('click', 
