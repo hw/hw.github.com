@@ -9,7 +9,7 @@
   </head>
   <body>
 
-    <h1 class="title">Thin Marker Configuration</h1>
+    <h2 class="title">Thin Marker Configuration</h1>
 
     <div class='item-container'>
       <div class='item-container-content'>
@@ -59,6 +59,12 @@
          <label class='item'>Color of Second Hand 
            <input id='picker_second_hand_color' type='text' class="item-color item-color-normal" value="#AA0000" />
          </label>
+         <label class='item'>Color of Second Hand Tip
+           <input id='picker_second_tip_color' type='text' class="item-color item-color-normal" value="#FFFF00" />
+         </label>
+         <label class='item'>Color of Calendar Day Text
+           <input id='picker_calendar_day_color' type='text' class="item-color item-color-normal" value="#FFFF00" />
+         </label>
       <div>
     </div>
 
@@ -98,6 +104,8 @@
           persistWrite('hands_color', '#AAAAAA');
           persistWrite('tips_color', '#FFFFFF');
           persistWrite('second_hand_color', '#AA0000');
+          persistWrite('second_tip_color', '#FFFF00');
+          persistWrite('calendar_day_color', '#FFFF00');
         }
       }
 
@@ -113,6 +121,8 @@
         document.getElementById('picker_hands_color').value            = persistRead('hands_color', '#AAAAAA');
         document.getElementById('picker_tips_color').value             = persistRead('tips_color', '#FFFFFF');
         document.getElementById('picker_second_hand_color').value      = persistRead('second_hand_color', '#AA0000');
+        document.getElementById('picker_second_tip_color').value       = persistRead('second_tip_color', '#FFFF00');
+        document.getElementById('picker_calendar_day_color').value     = persistRead('calendar_day_color', '#FFFF00');
       }
 
       function ajax(url, type, callback) {
@@ -138,7 +148,9 @@
             'charging_markers_color' : document.getElementById('picker_charging_markers_color').value,
             'hands_color'            : document.getElementById('picker_hands_color').value,
             'tips_color'             : document.getElementById('picker_tips_color').value,
-            'second_hand_color'      : document.getElementById('picker_second_hand_color').value
+            'second_hand_color'      : document.getElementById('picker_second_hand_color').value,
+            'second_tip_color'       : document.getElementById('picker_second_tip_color').value,
+            'calendar_day_color'     : document.getElementById('picker_calendar_day_color').value
           };  
           var location = 'pebblejs://close#' + encodeURIComponent(JSON.stringify(options));
 
@@ -153,6 +165,8 @@
           persistWrite('hands_color', options.hands_color);
           persistWrite('tips_color', options.tips_color);
           persistWrite('second_hand_color', options.second_hand_color);
+          persistWrite('second_tip_color', options.second_tip_color);
+          persistWrite('calendar_day_color', options.calendar_day_color);
 
           document.location = location;
         }, 
