@@ -102,11 +102,28 @@
  
 
     <script>
+      // Get query variables
+      function getQueryParam(variable, defaultValue) {
+        // Find all URL parameters
+        var query = location.search.substring(1);
+        var vars = query.split('&');
+        for (var i = 0; i < vars.length; i++) {
+          var pair = vars[i].split('=');
+
+          // If the query variable parameter is found, decode it to use and return it for use
+          if (pair[0] === variable) {
+            return decodeURIComponent(pair[1]);
+          }
+        }
+        return defaultValue || false;
+      }
+    
+
       function persistWrite(key, value) {
         localStorage.setItem(key, value);
       }
 
-      var persistRead = function(key, defaultValue) {
+      function persistRead(key, defaultValue) {
         if(localStorage.getItem(key) === null) {
           return defaultValue;
         } else {
@@ -217,7 +234,9 @@
             'second_tip_color'       : document.getElementById('picker_second_tip_color').value,
             'calendar_day_color'     : document.getElementById('picker_calendar_day_color').value
           };  
-          var location = 'pebblejs://close#' + encodeURIComponent(JSON.stringify(options));
+
+          var return_to = getQueryParam('return_to', 'pebblejs://close#');
+          var location  = return_to + encodeURIComponent(JSON.stringify(options));
 
           persistWrite('date', options.date);
           persistWrite('day', options.day);
